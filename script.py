@@ -47,7 +47,6 @@ def tabu_search(max_iter):
         vizinhos = []
         for i in range(len(produtos)):
             vizinho = melhor_solucao.copy()
-            # Get available numbers not in the set
             available_numbers = [n for n in range(1, 9) if n not in set(vizinho)]
             if available_numbers:
                 novo_numero = random.choice(available_numbers)
@@ -56,7 +55,7 @@ def tabu_search(max_iter):
                     vizinhos.append((vizinho, calcular_custo(vizinho)))
 
         if not vizinhos:
-            continue  # Se nenhum vizinho válido foi encontrado, continue com a próxima iteração
+            continue
 
         vizinhos.sort(key=lambda x: x[1], reverse=True)
         melhor_vizinho, custo_vizinho = vizinhos[0]
